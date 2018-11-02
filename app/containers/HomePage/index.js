@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import { BroswerRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HomeMenuItem from '../../components/HomeMenuItem';
 
@@ -41,6 +42,9 @@ const MenuWrap = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  > a {
+    text-decoration: none;
+  }
 `;
 
 /* eslint-disable react/prefer-stateless-function */
@@ -50,7 +54,9 @@ export default class HomePage extends React.PureComponent {
       <Div className="page-home">
         <HeaderImgInfo imgUrl={headerImg} username="张小虾" />
         <MenuWrap className="menu-wrap">
-          <HomeMenuItem imgUrl={qianshou} title="大手牵小手" />
+          <Link to="/hparty">
+            <HomeMenuItem imgUrl={qianshou} title="大手牵小手" />
+          </Link>
           <HomeMenuItem imgUrl={party} title="玩趣地点" />
           <HomeMenuItem imgUrl={kefu} title="我的客服" />
           <HomeMenuItem imgUrl={huiju} title="惠聚社区" />
