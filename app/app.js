@@ -16,6 +16,10 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 
+// Import onsen ui style
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
+
 // Import root app
 import App from 'containers/App';
 
@@ -34,7 +38,8 @@ import configureStore from './configureStore';
 import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
-import './global-styles';
+import './styles/global-styles';
+import './styles/base';
 
 // Create redux store with history
 const initialState = {};
