@@ -17,6 +17,9 @@ const Ul = styled.ul`
   > li {
     margin-right: 45px;
     list-style: none;
+    > a {
+      text-decoration: none;
+    }
   }
 `;
 
@@ -26,7 +29,7 @@ function NavList(props) {
       <NavCateItem
         title={item.title}
         iconUrl={item.iconUrl}
-        handleClick={item.handleClick}
+        categoryId={item.categoryId}
       />
     </li>
   ));

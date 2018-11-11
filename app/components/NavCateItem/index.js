@@ -7,13 +7,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   > img {
-    width: 46;
+    width: 46px;
     height: 46px;
     margin-bottom: 10px;
   }
@@ -21,17 +22,24 @@ const Div = styled.div`
 
 function NavCateItem(props) {
   return (
-    <Div onClick={props.handleClick}>
-      <img src={props.iconUrl} alt="图标" />
-      <p className="fs-15 fc-333">{props.title}</p>
-    </Div>
+    <Link
+      to={{
+        pathname: `/hparty/activityList/${props.categoryId}`,
+        state: { title: props.title },
+      }}
+    >
+      <Div>
+        <img src={props.iconUrl} alt="图标" />
+        <p className="fs-15 fc-333">{props.title}</p>
+      </Div>
+    </Link>
   );
 }
 
 NavCateItem.propTypes = {
   iconUrl: PropTypes.string.isRequired, // icon URL
   title: PropTypes.string.isRequired, // 名称
-  handleClick: PropTypes.func, // 点击处理函数
+  categoryId: PropTypes.string.isRequired, // 分类Id
 };
 
 export default NavCateItem;
