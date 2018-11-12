@@ -19,16 +19,15 @@ const Ul = styled.ul`
 
 function CouponList(props) {
   const couponList = props.couponList.map(item => (
-    <li>
-      <Coupon
-        couponId={item.id}
-        title={item.title}
-        amount={item.amount}
-        count={item.count}
-        range={item.range || ''}
-        payMethod={item.payMethod}
-      />
-    </li>
+    <Coupon
+      couponId={item.couponId}
+      title={item.title}
+      amount={item.amount}
+      count={item.count}
+      range={item.range || ''}
+      payMethod={item.payMethod}
+      key={item.couponId}
+    />
   ));
   return <Ul>{couponList}</Ul>;
 }

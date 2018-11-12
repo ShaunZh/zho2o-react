@@ -26,6 +26,7 @@ const Div = styled.div`
 
   > span {
     line-height: 20px;
+    margin-left: 10px;
   }
 `;
 

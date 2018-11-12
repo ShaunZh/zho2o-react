@@ -8,8 +8,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import couponBk from '../../images/bg_coupon.png';
+
+const Li = styled.li`
+  > a {
+    text-decoration: none;
+  }
+`;
 
 const Wrap = styled.div`
   background-image: url(${couponBk});
@@ -45,30 +52,34 @@ const Range = styled.div`
 `;
 
 function Coupon(props) {
-  const payMethod = props.payMethod === 0 ? '积分兑领' : '元兑领';
+  const payMethod = props.payMethod ? '积分兑领' : '元兑领';
   // 支付信息
   const payInfo =
     props.amount === 0 ? '免费兑领' : `${props.amount}${payMethod}`;
   return (
-    <Wrap>
-      <Top>
-        <Title className="fs-15">{props.title}</Title>
-        <Amount className="fs-12">{payInfo}</Amount>
-      </Top>
-      <Bottom>
-        <Range>{props.range}</Range>
-        <div>{props.count}</div>
-      </Bottom>
-    </Wrap>
+    <Li>
+      <Link to={`/hparty/payment/${props.couponId}`}>
+        <Wrap>
+          <Top>
+            <Title className="fs-15">{props.title}</Title>
+            <Amount className="fs-12">{payInfo}</Amount>
+          </Top>
+          <Bottom>
+            <Range>{props.range}</Range>
+            <div>已领 {props.count}</div>
+          </Bottom>
+        </Wrap>
+      </Link>
+    </Li>
   );
 }
 
 Coupon.propTypes = {
-  // couponId: PropTypes.string.isRequired, // 票券ID
+  couponId: PropTypes.string.isRequired, // 票券ID
   title: PropTypes.string.isRequired, // 票券名
   range: PropTypes.string, // 使用范围
   amount: PropTypes.number.isRequired, // 金额
-  payMethod: PropTypes.string, // 支付方式
+  payMethod: PropTypes.bool, // 支付方式
   count: PropTypes.number, // 已兑换数量
 };
 
