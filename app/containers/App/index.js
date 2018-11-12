@@ -20,12 +20,10 @@ import Hparty from '../Hparty';
 
 export default function App() {
   return (
-    <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/hparty" component={Hparty} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/hparty" component={Hparty} />
+      <Route component={NotFoundPage} />
+    </Switch>
   );
 }
