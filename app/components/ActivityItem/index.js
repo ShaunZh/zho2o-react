@@ -7,9 +7,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Div = styled.div`
   position: relative;
+  height: 100%;
   width: 170px;
   padding-bottom: 22px;
   background-color: #fff;
@@ -69,12 +71,14 @@ const ActivityItem = props => {
     </Li>
   ));
   return (
-    <Div>
-      <Img src={props.imgUrl} />
-      <P>{props.title}</P>
-      <Ul>{couponLi}</Ul>
-      <PSpan>已领{props.count}</PSpan>
-    </Div>
+    <Link to={`/hparty/merDetail/${props.merchantSeq}`}>
+      <Div>
+        <Img src={props.imgUrl} />
+        <P>{props.title}</P>
+        <Ul>{couponLi}</Ul>
+        <PSpan>已领{props.count}</PSpan>
+      </Div>
+    </Link>
   );
 };
 
@@ -83,6 +87,7 @@ ActivityItem.propTypes = {
   title: PropTypes.string, // 票券名
   list: PropTypes.array, // 票券列表
   count: PropTypes.number, // 已领
+  merchantSeq: PropTypes.string,
 };
 
 export default ActivityItem;
