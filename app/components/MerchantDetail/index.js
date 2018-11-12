@@ -15,7 +15,7 @@ import CouponList from '../CouponList';
 import storeIcon from '../../images/icon_store.png';
 import Header from '../../components/Header';
 
-const BkImg = styled.div`
+const BkImg = styled.img`
   width: 100%;
   height: 180px;
 `;
@@ -24,7 +24,7 @@ const Sell = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background-color: #fff;
   > p {
     margin-bottom: 17px;
   }
@@ -36,7 +36,13 @@ const IconStore = styled.img`
   margin-right: 7px;
 `;
 
-const Addr = styled.div``;
+const Addr = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+`;
 
 function BusinessDetail(props) {
   const navBack = window.history.back;
