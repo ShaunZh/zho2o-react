@@ -33,17 +33,34 @@ const Row = styled.div`
   }
 `;
 
+const Ul = styled.ul`
+  margin: 25px auto;
+`;
+
 /* eslint-disable react/prefer-stateless-function */
 const PaymentResult = props => {
-  // const handleClick = () => {
-  //   // 将数量传递给父元素
-  //   props.handleClick(this.state.count);
-  // };
-  const range = `使用期限：${props.startTime.substr(
-    0,
-    10,
-  )} - ${props.endTime.substr(0, 10)}`;
+  // 点击票券的操作函数
+  const handleClick = couponNumber => {
+    props.handleClick(couponNumber);
+  };
+  // 票券列表
+  const couponList = props.couponList.map(item => {
+    const range = `使用期限：${item.startTime.substr(
+      0,
+      10,
+    )} - ${item.endTime.substr(0, 10)}`;
 
+    return (
+      <li>
+        <CouponPay
+          title={item.title}
+          tipLeft={range}
+          optionName="立即使用"
+          handleClick={() => handleClick(item.couponNumber)}
+        />
+      </li>
+    );
+  });
   // 拼接使用期限
   return (
     <Wrap>
@@ -56,17 +73,16 @@ const PaymentResult = props => {
         <p className="fs-15">支付金额</p>
         <p>{props.amount}</p>
       </Row>
-      <CouponPay title={props.title} range={range} />
+      <Ul>{couponList}</Ul>
     </Wrap>
   );
 };
 
 PaymentResult.propTypes = {
-  title: PropTypes.string, // 票券标题
-  orderNumber: PropTypes.string, // 票券单价
-  startTime: PropTypes.string, // 票券使用起始时间
-  endTime: PropTypes.string, // 票券使用结束时间
+  orderNumber: PropTypes.string, // 订单编号
   amount: PropTypes.number, // 账户剩余金额
+  couponList: PropTypes.array, // 票券列表
+  handleClick: PropTypes.func, // 点击事件
 };
 
 export default PaymentResult;

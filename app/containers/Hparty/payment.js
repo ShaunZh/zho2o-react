@@ -21,7 +21,7 @@ export default class PaymentPage extends React.Component {
     super(props);
     this.state = {
       title: '', // 票券名称
-      price: '', // 单价
+      price: 0, // 单价
       method: '', // 支付方式
       startTime: '',
       endTime: '',
@@ -87,7 +87,7 @@ export default class PaymentPage extends React.Component {
           method={this.state.method}
           startTime={this.state.startTime}
           endTime={this.state.endTime}
-          remain="1000"
+          remain={1000}
           handleClick={() => this.handlePay()}
         />
       </div>
